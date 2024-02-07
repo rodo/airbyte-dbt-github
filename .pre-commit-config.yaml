@@ -8,3 +8,12 @@ repos:
     rev: 5.0.3
     hooks:
       -   id: flake8
+  # - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+  #   rev: v1.2.0
+  #   hooks:
+  #     - id: check-model-has-description
+  #       args: ["--manifest", "./ghdata/target/manifest.json", "--"]
+  #     - id: check-model-has-all-columns
+  #       args: ["--catalog", "./ghdata/target/catalog.json", "--manifest", "./ghdata/target/manifest.json","--"]
+  #     - id: check-model-has-tests
+  #       args: ["--manifest", "./ghdata/target/manifest.json", "--test-cnt", "2", "--"]

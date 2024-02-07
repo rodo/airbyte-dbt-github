@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: public
+    tables:
+      - name: gh_workflow_jobs
+        description: workflows jobs
+        columns:
+          - name: created_at
+            description: >
+              when the run started
+          - name: name
+            description: the name of the workflow
+          - name: status
+            description: indicate if the run is still running or complete
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['completed']
+          - name: conclusion
+            description: final test of the run, failed, success, canceled
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['skipped','failure','cancelled','success']
+          - name: repository_name
+            description: the name of the repository where the worflow ran
+            tests:
+              - not_null
+          - name: runner_name
+            description: on which Github runner the job ran
+
+      - name: gh_workflow_run
+        description: worflows run
+        columns:
+          - name: created_at
+            description: >
+              when the run started
+          - name: repository_name
+            description: the name of the repository where the worflow ran
+          - name: name
+            description: the name of the workflow
+          - name: status
+            description: indicate if the run is still running or complete
+          - name: conclusion
+            description: final test of the run, failed, success, canceled
+            tests:
+              - not_null
